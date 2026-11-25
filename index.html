@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="dashboard" name="artifact-type"/>
+<meta content="sticker" name="design-style"/>
+<title>Lingo Mate — Your Foreign Language Learning Companion</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Sans+Sinhala:wght@400;500;700&amp;family=Noto+Sans+Tamil:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+
+<link href="styles.css" rel="stylesheet"/></head>
+<body data-lang="fr">
+<div class="page-grid">
+<!-- Top Header & Switchers -->
+<header class="hero-panel topbar">
+<div class="topbar-main">
+<div class="brand-block">
+<div class="row-wrap">
+<span class="badge">Sri Lanka Multilingual Companion</span>
+<span class="badge secondary" id="maintenance-badge" style="display:none;">Maintenance Notice Active</span>
+</div>
+<h1 class="display-title">Lingo <em>Mate</em></h1>
+<p class="muted" style="margin:0;">Your Foreign Language Learning Companion — aligned to GCE O/L, A/L &amp; international proficiency pathways.</p>
+</div>
+<div class="controls-cluster">
+<!-- Explanation Language Toggle -->
+<div>
+<span class="label-kicker" style="display:block; margin-bottom: var(--space-xs);">Explanation Language</span>
+<div aria-label="Explanation language toggle" class="segmented" role="group">
+<button class="seg-btn active" id="exp-btn-en" onclick="setExplanationLang('en')" type="button">English</button>
+<button class="seg-btn non-latin" id="exp-btn-si" onclick="setExplanationLang('si')" type="button">සිංහල</button>
+<button class="seg-btn non-latin" id="exp-btn-ta" onclick="setExplanationLang('ta')" type="button">தமிழ்</button>
+</div>
+</div>
+<!-- Role Simulator Switcher -->
+<div>
+<span class="label-kicker" style="display:block; margin-bottom: var(--space-xs);">Active Role (RBAC Simulator)</span>
+<div aria-label="User role simulator" class="segmented" role="group">
+<button class="seg-btn active" id="role-btn-student" onclick="setUserRole('student')" type="button">Student</button>
+<button class="seg-btn" id="role-btn-moderator" onclick="setUserRole('moderator')" type="button">Teacher / Mod</button>
+<button class="seg-btn" id="role-btn-admin" onclick="setUserRole('admin')" type="button">Administrator</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 5 Language Theme Switcher -->
+<div class="lang-strip">
+<div aria-label="Select target foreign language" class="lang-pills" role="group">
+<button class="lang-pill active" id="lang-pill-fr" onclick="selectLanguage('fr')" type="button">🇫🇷 French <span class="muted" style="color:inherit; opacity:0.85;">(FR)</span></button>
+<button class="lang-pill" id="lang-pill-de" onclick="selectLanguage('de')" type="button">🇩🇪 German <span class="muted" style="color:inherit; opacity:0.85;">(DE)</span></button>
+<button class="lang-pill" id="lang-pill-ja" onclick="selectLanguage('ja')" type="button">🇯🇵 Japanese <span class="muted" style="color:inherit; opacity:0.85;">(JP)</span></button>
+<button class="lang-pill" id="lang-pill-zh" onclick="selectLanguage('zh')" type="button">🇨🇳 Mandarin <span class="muted" style="color:inherit; opacity:0.85;">(CN)</span></button>
+<button class="lang-pill" id="lang-pill-ko" onclick="selectLanguage('ko')" type="button">🇰🇷 Korean <span class="muted" style="color:inherit; opacity:0.85;">(KR)</span></button>
+</div>
+<div class="row-wrap">
+<span class="badge" id="active-role-badge">Role: Student (Nimali Perera)</span>
+<button class="btn btn-soft btn-sm" onclick="exportUserStudyData()" type="button">
+<i aria-hidden="true" data-lucide="download" height="16" width="16"></i>
+            Export Progress
+          </button>
+</div>
+</div>
+</header>
+<!-- Inline Global Toast / RBAC Feedback Banner -->
+<div aria-live="polite" class="feedback-box info" id="global-banner" role="status" style="display:none;"></div>
+<!-- Workspace Navigation -->
+<nav aria-label="Workspace modules" class="workspace-nav" id="workspace-nav"></nav>
+<!-- Main Dynamic Workspace -->
+<main class="stack-lg" id="main-workspace"></main>
+<!-- Grounding & Sources Footer -->
+<footer class="card" style="box-shadow: var(--shadow-alt);">
+<div class="between">
+<div class="prose">
+<span class="label-kicker">Pedagogical &amp; Curriculum Grounding</span>
+<p class="muted" style="margin: var(--space-xs) 0 0;">
+            Lingo Mate integrates communicative Second Language Acquisition principles (contextualised vocabulary, adaptive review, explanatory corrective feedback, and balanced productive/receptive practice) with Sri Lankan GCE O/L &amp; A/L curriculum structures, the 5E inquiry cycle, and international exam frameworks (DELF, Goethe-Zertifikat, JLPT, HSK, TOPIK).
+          </p>
+</div>
+<div class="row-wrap">
+<button class="btn btn-outline btn-sm" id="reset-all-btn" onclick="handleResetAllState(this)" type="button">Reset Saved Progress</button>
+</div>
+</div>
+</footer>
+</div>
+<api-shim></api-shim>
+
+<script src="script.js"></script></body>
+</html>
